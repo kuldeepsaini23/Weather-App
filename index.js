@@ -27,12 +27,14 @@ function switchTab(clickedTab) {
 
   if (!searchForm.classList.contains("active")) {
     userInfoContainer.classList.remove("active");
+    errorInfoContainer.classList.remove("active");
     grantAccess.classList.remove("active");
     searchForm.classList.add("active");
   } else {
     //*main pehle search tab tha ab your wether vale pe gya
     searchForm.classList.remove("active");
     userInfoContainer.classList.remove("active");
+    errorInfoContainer.classList.remove("active");
     //* your weather vale pe gya hu toh local storage se lat or longi se weather dedu
     getfromSessionsStorage();
   }
@@ -161,6 +163,7 @@ async function fetchSearchWeatherInfo(city) {
       loadingScreen.classList.remove("active");
       errorInfoContainer.classList.add("active");
     } else {
+      errorInfoContainer.classList.remove("active");
       loadingScreen.classList.remove("active");
       userInfoContainer.classList.add("active");
       renderWeatherInfo(data);
